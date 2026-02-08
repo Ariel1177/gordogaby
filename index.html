@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Cobros 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .table-container {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background: white;
+        }
+        .header-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        }
+        .metric-card {
+            transition: transform 0.2s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        .currency::before {
+            content: "$ ";
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="header-gradient text-white p-8 rounded-2xl mb-8 shadow-lg">
+            <h1 class="text-3xl font-bold mb-2">Proyección de Ingresos 2026</h1>
+            <p class="text-blue-100 italic">Resumen consolidado de fuentes y flujos de caja mensuales.</p>
+        </header>
+
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="metric-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Total Anual Estimado</p>
+                <h2 id="total-anual" class="text-3xl font-bold text-blue-800 mt-2">$ 30.270.000</h2>
+            </div>
+            <div class="metric-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Pico de Ingresos (Mayo)</p>
+                <h2 class="text-3xl font-bold text-emerald-600 mt-2">$ 5.570.000</h2>
+            </div>
+            <div class="metric-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Fuentes Activas</p>
+                <h2 class="text-3xl font-bold text-slate-800 mt-2">6 Orígenes</h2>
+            </div>
+        </div>
+
+        <!-- Main Table -->
+        <div class="table-container border border-slate-200">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-slate-800 text-white text-sm uppercase">
+                        <tr>
+                            <th class="p-4 font-semibold">Mes</th>
+                            <th class="p-4 font-semibold text-right">Aixa</th>
+                            <th class="p-4 font-semibold text-right">Ariadna</th>
+                            <th class="p-4 font-semibold text-right">Luis</th>
+                            <th class="p-4 font-semibold text-right">Sole</th>
+                            <th class="p-4 font-semibold text-right">Cristian</th>
+                            <th class="p-4 font-semibold text-right">Círculos</th>
+                            <th class="p-4 font-semibold text-right bg-slate-900">Total Mensual</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body" class="text-sm">
+                        <!-- Data injected by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <footer class="mt-8 text-center text-slate-400 text-xs">
+            <p>&copy; 2026 Sistema de Gestión Financiera Privada. Los montos incluyen Aguinaldo y Círculos programados.</p>
+        </footer>
+    </div>
+
+    <script>
+        const data = [
+            { mes: "Febrero", aixa: 500000, ariadna: 1300000, luis: 370000, sole: 370000, cristian: 0, circulos: 0 },
+            { mes: "Marzo", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 400000, circulos: 800000 },
+            { mes: "Abril", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
+            { mes: "Mayo", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 400000, circulos: 3000000 },
+            { mes: "Junio", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
+            { mes: "Julio", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 600000, circulos: 1600000 },
+            { mes: "Agosto", aixa: 500000, ariadna: 600000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
+            { mes: "Septiembre", aixa: 500000, ariadna: 600000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
+            { mes: "Octubre", aixa: 0, ariadna: 600000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
+            { mes: "Noviembre", aixa: 0, ariadna: 600000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
+            { mes: "Diciembre", aixa: 0, ariadna: 600000, luis: 0, sole: 0, cristian: 200000, circulos: 0 }
+        ];
+
+        function formatCurrency(num) {
+            return num.toLocaleString('es-AR');
+        }
+
+        const tableBody = document.getElementById('table-body');
+        let totalAnual = 0;
+
+        data.forEach(row => {
+            const rowTotal = row.aixa + row.ariadna + row.luis + row.sole + row.cristian + row.circulos;
+            totalAnual += rowTotal;
+
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td class="p-4 font-bold text-slate-700">${row.mes}</td>
+                <td class="p-4 text-right text-slate-600">${row.aixa > 0 ? formatCurrency(row.aixa) : '-'}</td>
+                <td class="p-4 text-right text-slate-600">${row.ariadna > 0 ? formatCurrency(row.ariadna) : '-'}</td>
+                <td class="p-4 text-right text-slate-600">${row.luis > 0 ? formatCurrency(row.luis) : '-'}</td>
+                <td class="p-4 text-right text-slate-600">${row.sole > 0 ? formatCurrency(row.sole) : '-'}</td>
+                <td class="p-4 text-right text-slate-600">${row.cristian > 0 ? formatCurrency(row.cristian) : '-'}</td>
+                <td class="p-4 text-right font-semibold text-blue-600">${row.circulos > 0 ? formatCurrency(row.circulos) : '-'}</td>
+                <td class="p-4 text-right font-bold bg-slate-50 text-slate-900 border-l border-slate-200">$ ${formatCurrency(rowTotal)}</td>
+            `;
+            tableBody.appendChild(tr);
+        });
+
+        document.getElementById('total-anual').textContent = `$ ${formatCurrency(totalAnual)}`;
+    </script>
+</body>
+</html>
