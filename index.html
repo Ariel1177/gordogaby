@@ -1,135 +1,215 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Cobros 2026</title>
+    <title>Mi Dieta Optimizada</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-primary: #1e293b;
+            --accent: #3b82f6;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f172a;
+                --card-bg: #1e293b;
+                --text-primary: #f1f5f9;
+            }
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s ease;
         }
-        .table-container {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border-radius: 0.75rem;
-            overflow: hidden;
-            background: white;
-        }
-        .header-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-        }
-        .metric-card {
+
+        .meal-card {
+            background-color: var(--card-bg);
+            border-radius: 1.25rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease;
         }
-        .metric-card:hover {
-            transform: translateY(-2px);
+
+        .meal-card:active {
+            transform: scale(0.98);
         }
-        tr:nth-child(even) {
-            background-color: #f1f5f9;
+
+        .time-badge {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
         }
-        .currency::before {
-            content: "$ ";
+
+        .kcal-tag {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .progress-container {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: var(--bg-color);
+            backdrop-filter: blur(8px);
         }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="pb-10">
 
-    <div class="max-w-7xl mx-auto">
-        <!-- Header -->
-        <header class="header-gradient text-white p-8 rounded-2xl mb-8 shadow-lg">
-            <h1 class="text-3xl font-bold mb-2">Proyección de Ingresos 2026</h1>
-            <p class="text-blue-100 italic">Resumen consolidado de fuentes y flujos de caja mensuales.</p>
-        </header>
+    <!-- Header & Resumen -->
+    <header class="p-6 text-center">
+        <h1 class="text-3xl font-bold mb-2">Dieta Optimizada</h1>
+        <div class="flex justify-center gap-4 mt-4">
+            <div class="px-4 py-2 rounded-full bg-blue-500 text-white text-sm font-semibold shadow-lg">
+                <i class="fas fa-fire-alt mr-2"></i>~2600 kcal
+            </div>
+            <div class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-semibold shadow-lg">
+                <i class="fas fa-dumbbell mr-2"></i>Alta Prot
+            </div>
+        </div>
+    </header>
 
-        <!-- KPI Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="metric-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Total Anual Estimado</p>
-                <h2 id="total-anual" class="text-3xl font-bold text-blue-800 mt-2">$ 30.270.000</h2>
+    <main class="max-w-md mx-auto px-4 space-y-6">
+
+        <!-- COMIDA 1 -->
+        <section class="meal-card p-5">
+            <div class="flex justify-between items-center mb-4">
+                <span class="time-badge text-white px-3 py-1 rounded-lg font-bold text-sm">
+                    <i class="far fa-clock mr-1"></i> 05:00
+                </span>
+                <span class="text-xs uppercase font-bold opacity-60">Desayuno</span>
             </div>
-            <div class="metric-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Pico de Ingresos (Mayo)</p>
-                <h2 class="text-3xl font-bold text-emerald-600 mt-2">$ 5.570.000</h2>
+            <ul class="space-y-2 mb-4">
+                <li class="flex items-center"><i class="fas fa-egg text-yellow-500 mr-3 w-5"></i> 4 Huevos</li>
+                <li class="flex items-center"><i class="fas fa-seedling text-orange-400 mr-3 w-5"></i> 60g Avena</li>
+                <li class="flex items-center"><i class="fas fa-ice-cream text-blue-300 mr-3 w-5"></i> 150g Yogur</li>
+                <li class="flex items-center"><i class="fas fa-leaf text-yellow-300 mr-3 w-5"></i> 1 Banana</li>
+            </ul>
+            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~650 kcal</div>
+        </section>
+
+        <!-- COMIDA 2 -->
+        <section class="meal-card p-5">
+            <div class="flex justify-between items-center mb-4">
+                <span class="time-badge text-white px-3 py-1 rounded-lg font-bold text-sm">
+                    <i class="far fa-clock mr-1"></i> 08:00
+                </span>
+                <span class="text-xs uppercase font-bold opacity-60">Media Mañana</span>
             </div>
-            <div class="metric-card bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                <p class="text-sm font-semibold text-slate-500 uppercase tracking-wider">Fuentes Activas</p>
-                <h2 class="text-3xl font-bold text-slate-800 mt-2">6 Orígenes</h2>
+            <ul class="space-y-2 mb-4">
+                <li class="flex items-center"><i class="fas fa-drumstick-bite text-red-400 mr-3 w-5"></i> 150g Pollo (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-bowl-rice text-gray-400 mr-3 w-5"></i> 70g Arroz (Crudo)</li>
+            </ul>
+            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~450 kcal</div>
+        </section>
+
+        <!-- COMIDA 3 -->
+        <section class="meal-card p-5 border-l-4 border-blue-500">
+            <div class="flex justify-between items-center mb-4">
+                <span class="time-badge text-white px-3 py-1 rounded-lg font-bold text-sm">
+                    <i class="far fa-clock mr-1"></i> 12:30
+                </span>
+                <span class="text-xs uppercase font-bold opacity-60">Almuerzo</span>
+            </div>
+            <ul class="space-y-2 mb-4">
+                <li class="flex items-center"><i class="fas fa-drumstick-bite text-red-400 mr-3 w-5"></i> 180g Pollo (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-bowl-rice text-gray-400 mr-3 w-5"></i> 90g Arroz (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-carrot text-orange-500 mr-3 w-5"></i> Verduras</li>
+            </ul>
+            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~600 kcal</div>
+        </section>
+
+        <!-- PRE-ENTRENO -->
+        <section class="meal-card p-5 bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-700">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-yellow-500 text-white px-3 py-1 rounded-lg font-bold text-sm">
+                    <i class="fas fa-bolt mr-1"></i> 16:00
+                </span>
+                <span class="text-xs uppercase font-bold text-yellow-600">Pre-Entreno</span>
+            </div>
+            <ul class="space-y-2 mb-4">
+                <li class="flex items-center"><i class="fas fa-coffee text-amber-800 mr-3 w-5"></i> Café</li>
+                <li class="flex items-center"><i class="fas fa-leaf text-yellow-300 mr-3 w-5"></i> 1 Banana</li>
+                <li class="flex items-center font-bold text-blue-500"><i class="fas fa-flask mr-3 w-5"></i> 5g Creatina ✅</li>
+            </ul>
+            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~100 kcal</div>
+        </section>
+
+        <!-- POST-ENTRENO -->
+        <section class="meal-card p-5 border-l-4 border-purple-500">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-purple-600 text-white px-3 py-1 rounded-lg font-bold text-sm">
+                    <i class="far fa-clock mr-1"></i> 18:30
+                </span>
+                <span class="text-xs uppercase font-bold opacity-60">Post-Entreno</span>
+            </div>
+            <ul class="space-y-2 mb-4">
+                <li class="flex items-center"><i class="fas fa-shaker text-purple-400 mr-3 w-5"></i> 1 Scoop Proteína</li>
+            </ul>
+            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~120 kcal</div>
+        </section>
+
+        <!-- COMIDA 4 (Cena) -->
+        <section class="meal-card p-5">
+            <div class="flex justify-between items-center mb-4">
+                <span class="time-badge text-white px-3 py-1 rounded-lg font-bold text-sm">
+                    <i class="far fa-clock mr-1"></i> 20:00
+                </span>
+                <span class="text-xs uppercase font-bold opacity-60">Cena</span>
+            </div>
+            <ul class="space-y-2 mb-4">
+                <li class="flex items-center"><i class="fas fa-drumstick-bite text-red-400 mr-3 w-5"></i> 150g Pollo (Crudo)</li>
+                <li class="flex items-center"><i class="fas fa-bowl-rice text-gray-400 mr-3 w-5"></i> 70g Arroz (Crudo)</li>
+            </ul>
+            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~450 kcal</div>
+        </section>
+
+        <!-- ANTES DE DORMIR -->
+        <section class="meal-card p-5 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-indigo-900 text-white px-3 py-1 rounded-lg font-bold text-sm">
+                    <i class="fas fa-moon mr-1"></i> 22:30
+                </span>
+                <span class="text-xs uppercase font-bold opacity-60">Antes de dormir</span>
+            </div>
+            <ul class="space-y-2 mb-4">
+                <li class="flex items-center"><i class="fas fa-egg text-yellow-500 mr-3 w-5"></i> 3 Huevos</li>
+            </ul>
+            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~210 kcal</div>
+        </section>
+
+        <!-- PILL INFORMATIVA -->
+        <div class="bg-blue-600 text-white p-6 rounded-[2rem] shadow-xl">
+            <h3 class="font-bold text-lg mb-2 flex items-center">
+                <i class="fas fa-capsules mr-2"></i> Suplementación: Creatina
+            </h3>
+            <p class="text-blue-100 text-sm mb-3">Tu aliado más simple y efectivo.</p>
+            <div class="bg-blue-700/50 p-4 rounded-xl space-y-2">
+                <p class="flex items-center text-sm font-medium"><i class="fas fa-check-circle mr-2 text-emerald-400"></i> Dosis: 5g diarios</p>
+                <p class="flex items-center text-sm font-medium"><i class="fas fa-clock mr-2 text-emerald-400"></i> Momento: Pre-Entreno (16:00)</p>
             </div>
         </div>
 
-        <!-- Main Table -->
-        <div class="table-container border border-slate-200">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-slate-800 text-white text-sm uppercase">
-                        <tr>
-                            <th class="p-4 font-semibold">Mes</th>
-                            <th class="p-4 font-semibold text-right">Aixa</th>
-                            <th class="p-4 font-semibold text-right">Ariadna</th>
-                            <th class="p-4 font-semibold text-right">Luis</th>
-                            <th class="p-4 font-semibold text-right">Sole</th>
-                            <th class="p-4 font-semibold text-right">Cristian</th>
-                            <th class="p-4 font-semibold text-right">Círculos</th>
-                            <th class="p-4 font-semibold text-right bg-slate-900">Total Mensual</th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-body" class="text-sm">
-                        <!-- Data injected by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    </main>
 
-        <!-- Footer Info -->
-        <footer class="mt-8 text-center text-slate-400 text-xs">
-            <p>&copy; 2026 Sistema de Gestión Financiera Privada. Los montos incluyen Aguinaldo y Círculos programados.</p>
-        </footer>
-    </div>
+    <footer class="mt-10 p-6 text-center opacity-40 text-xs">
+        Hecho para visualización móvil • 2024
+    </footer>
 
     <script>
-        const data = [
-            { mes: "Febrero", aixa: 500000, ariadna: 1300000, luis: 370000, sole: 370000, cristian: 0, circulos: 0 },
-            { mes: "Marzo", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 400000, circulos: 800000 },
-            { mes: "Abril", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
-            { mes: "Mayo", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 400000, circulos: 3000000 },
-            { mes: "Junio", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
-            { mes: "Julio", aixa: 500000, ariadna: 1300000, luis: 0, sole: 370000, cristian: 600000, circulos: 1600000 },
-            { mes: "Agosto", aixa: 500000, ariadna: 600000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
-            { mes: "Septiembre", aixa: 500000, ariadna: 600000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
-            { mes: "Octubre", aixa: 0, ariadna: 600000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
-            { mes: "Noviembre", aixa: 0, ariadna: 600000, luis: 0, sole: 370000, cristian: 400000, circulos: 0 },
-            { mes: "Diciembre", aixa: 0, ariadna: 600000, luis: 0, sole: 0, cristian: 200000, circulos: 0 }
-        ];
-
-        function formatCurrency(num) {
-            return num.toLocaleString('es-AR');
-        }
-
-        const tableBody = document.getElementById('table-body');
-        let totalAnual = 0;
-
-        data.forEach(row => {
-            const rowTotal = row.aixa + row.ariadna + row.luis + row.sole + row.cristian + row.circulos;
-            totalAnual += rowTotal;
-
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td class="p-4 font-bold text-slate-700">${row.mes}</td>
-                <td class="p-4 text-right text-slate-600">${row.aixa > 0 ? formatCurrency(row.aixa) : '-'}</td>
-                <td class="p-4 text-right text-slate-600">${row.ariadna > 0 ? formatCurrency(row.ariadna) : '-'}</td>
-                <td class="p-4 text-right text-slate-600">${row.luis > 0 ? formatCurrency(row.luis) : '-'}</td>
-                <td class="p-4 text-right text-slate-600">${row.sole > 0 ? formatCurrency(row.sole) : '-'}</td>
-                <td class="p-4 text-right text-slate-600">${row.cristian > 0 ? formatCurrency(row.cristian) : '-'}</td>
-                <td class="p-4 text-right font-semibold text-blue-600">${row.circulos > 0 ? formatCurrency(row.circulos) : '-'}</td>
-                <td class="p-4 text-right font-bold bg-slate-50 text-slate-900 border-l border-slate-200">$ ${formatCurrency(rowTotal)}</td>
-            `;
-            tableBody.appendChild(tr);
+        // Efecto visual simple al hacer click en las tarjetas (opcional)
+        document.querySelectorAll('.meal-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // Se puede añadir lógica de "marcar como comido" aquí
+            });
         });
-
-        document.getElementById('total-anual').textContent = `$ ${formatCurrency(totalAnual)}`;
     </script>
 </body>
 </html>
+
+```
