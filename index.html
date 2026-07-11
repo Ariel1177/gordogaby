@@ -1,215 +1,223 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Dieta Optimizada</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-primary: #1e293b;
-            --accent: #3b82f6;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan Hiperproteico - Ganancia de Masa Muscular</title>
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #0f172a;
-                --card-bg: #1e293b;
-                --text-primary: #f1f5f9;
-            }
-        }
+<style>
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f6f8;
+    margin:0;
+    padding:30px;
+    color:#333;
+}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            transition: background-color 0.3s ease;
-        }
+.container{
+    max-width:900px;
+    margin:auto;
+    background:#fff;
+    border-radius:15px;
+    padding:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
 
-        .meal-card {
-            background-color: var(--card-bg);
-            border-radius: 1.25rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s ease;
-        }
+h1{
+    text-align:center;
+    color:#1565C0;
+}
 
-        .meal-card:active {
-            transform: scale(0.98);
-        }
+h2{
+    color:#2E7D32;
+    margin-top:35px;
+}
 
-        .time-badge {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-        }
+.info{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    background:#e3f2fd;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:25px;
+}
 
-        .kcal-tag {
-            background-color: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-        }
+.card{
+    margin:18px 0;
+    border-left:8px solid #1565C0;
+    background:#fafafa;
+    padding:18px;
+    border-radius:10px;
+}
 
-        .progress-container {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background-color: var(--bg-color);
-            backdrop-filter: blur(8px);
-        }
-    </style>
+.hora{
+    font-size:22px;
+    font-weight:bold;
+    color:#1565C0;
+}
+
+.calorias{
+    color:#d84315;
+    font-weight:bold;
+}
+
+.total{
+    text-align:center;
+    background:#2E7D32;
+    color:white;
+    padding:20px;
+    border-radius:12px;
+    margin-top:35px;
+}
+
+ul{
+    margin-top:8px;
+}
+
+</style>
 </head>
-<body class="pb-10">
 
-    <!-- Header & Resumen -->
-    <header class="p-6 text-center">
-        <h1 class="text-3xl font-bold mb-2">Dieta Optimizada</h1>
-        <div class="flex justify-center gap-4 mt-4">
-            <div class="px-4 py-2 rounded-full bg-blue-500 text-white text-sm font-semibold shadow-lg">
-                <i class="fas fa-fire-alt mr-2"></i>~2600 kcal
-            </div>
-            <div class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-semibold shadow-lg">
-                <i class="fas fa-dumbbell mr-2"></i>Alta Prot
-            </div>
-        </div>
-    </header>
+<body>
 
-    <main class="max-w-md mx-auto px-4 space-y-6">
+<div class="container">
 
-        <!-- COMIDA 1 -->
-        <section class="meal-card p-5">
-            <div class="flex justify-between items-center mb-4">
-                <span class="time-badge text-white px-3 py-1 rounded-lg font-bold text-sm">
-                    <i class="far fa-clock mr-1"></i> 05:00
-                </span>
-                <span class="text-xs uppercase font-bold opacity-60">Desayuno</span>
-            </div>
-            <ul class="space-y-2 mb-4">
-                <li class="flex items-center"><i class="fas fa-egg text-yellow-500 mr-3 w-5"></i> 4 Huevos</li>
-                <li class="flex items-center"><i class="fas fa-seedling text-orange-400 mr-3 w-5"></i> 60g Avena</li>
-                <li class="flex items-center"><i class="fas fa-ice-cream text-blue-300 mr-3 w-5"></i> 150g Yogur</li>
-                <li class="flex items-center"><i class="fas fa-leaf text-yellow-300 mr-3 w-5"></i> 1 Banana</li>
-            </ul>
-            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~650 kcal</div>
-        </section>
+<h1>💪 Dieta Hiperproteica para Ganancia Muscular</h1>
 
-        <!-- COMIDA 2 -->
-        <section class="meal-card p-5">
-            <div class="flex justify-between items-center mb-4">
-                <span class="time-badge text-white px-3 py-1 rounded-lg font-bold text-sm">
-                    <i class="far fa-clock mr-1"></i> 07:30
-                </span>
-                <span class="text-xs uppercase font-bold opacity-60">Media Mañana</span>
-            </div>
-            <ul class="space-y-2 mb-4">
-                <li class="flex items-center"><i class="fas fa-drumstick-bite text-red-400 mr-3 w-5"></i> 110g Pollo (Cocinado)</li>
-                <li class="flex items-center"><i class="fas fa-bowl-rice text-gray-400 mr-3 w-5"></i> 210g Arroz (Cocinado)</li>
-            </ul>
-            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~450 kcal</div>
-        </section>
+<div class="info">
+<div><strong>Peso:</strong> 75 kg</div>
+<div><strong>Entrenamiento:</strong> 18:00 hs</div>
+<div><strong>Objetivo:</strong> Aumento de Masa Muscular</div>
+</div>
 
-        <!-- COMIDA 3 -->
-        <section class="meal-card p-5 border-l-4 border-blue-500">
-            <div class="flex justify-between items-center mb-4">
-                <span class="time-badge text-white px-3 py-1 rounded-lg font-bold text-sm">
-                    <i class="far fa-clock mr-1"></i> 12:30
-                </span>
-                <span class="text-xs uppercase font-bold opacity-60">Almuerzo</span>
-            </div>
-            <ul class="space-y-2 mb-4">
-                <li class="flex items-center"><i class="fas fa-drumstick-bite text-red-400 mr-3 w-5"></i> 130g Pollo (Cocinado)</li>
-                <li class="flex items-center"><i class="fas fa-bowl-rice text-gray-400 mr-3 w-5"></i> 250g Arroz (Cocinado)</li>
-                <li class="flex items-center"><i class="fas fa-carrot text-orange-500 mr-3 w-5"></i> Verduras</li>
-            </ul>
-            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~600 kcal</div>
-        </section>
+<div class="card">
+<div class="hora">04:30 - Desayuno</div>
 
-        <!-- PRE-ENTRENO -->
-        <section class="meal-card p-5 bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-700">
-            <div class="flex justify-between items-center mb-4">
-                <span class="bg-yellow-500 text-white px-3 py-1 rounded-lg font-bold text-sm">
-                    <i class="fas fa-bolt mr-1"></i> 16:00
-                </span>
-                <span class="text-xs uppercase font-bold text-yellow-600">Pre-Entreno</span>
-            </div>
-            <ul class="space-y-2 mb-4">
-                <li class="flex items-center"><i class="fas fa-coffee text-amber-800 mr-3 w-5"></i> Café</li>
-                <li class="flex items-center"><i class="fas fa-leaf text-yellow-300 mr-3 w-5"></i> 1 Banana</li>
-                <li class="flex items-center font-bold text-blue-500"><i class="fas fa-flask mr-3 w-5"></i> 5g Creatina ✅</li>
-            </ul>
-            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~100 kcal</div>
-        </section>
+<ul>
+<li>80 g de avena</li>
+<li>1 scoop de proteína</li>
+<li>300 ml de yogurt bebible</li>
+<li>5 g de creatina</li>
+</ul>
 
-        <!-- POST-ENTRENO -->
-        <section class="meal-card p-5 border-l-4 border-purple-500">
-            <div class="flex justify-between items-center mb-4">
-                <span class="bg-purple-600 text-white px-3 py-1 rounded-lg font-bold text-sm">
-                    <i class="far fa-clock mr-1"></i> 18:30
-                </span>
-                <span class="text-xs uppercase font-bold opacity-60">Post-Entreno</span>
-            </div>
-            <ul class="space-y-2 mb-4">
-                <li class="flex items-center"><i class="fas fa-shaker text-purple-400 mr-3 w-5"></i> 1 Scoop Proteína</li>
-            </ul>
-            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~120 kcal</div>
-        </section>
+<p class="calorias">≈ 670 kcal</p>
 
-        <!-- COMIDA 4 (Cena) -->
-        <section class="meal-card p-5">
-            <div class="flex justify-between items-center mb-4">
-                <span class="time-badge text-white px-3 py-1 rounded-lg font-bold text-sm">
-                    <i class="far fa-clock mr-1"></i> 20:00
-                </span>
-                <span class="text-xs uppercase font-bold opacity-60">Cena</span>
-            </div>
-            <ul class="space-y-2 mb-4">
-                <li class="flex items-center"><i class="fas fa-drumstick-bite text-red-400 mr-3 w-5"></i> 110g Pollo (Cocinado)</li>
-                <li class="flex items-center"><i class="fas fa-bowl-rice text-gray-400 mr-3 w-5"></i> 210g Arroz (Cocinado)</li>
-            </ul>
-            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~450 kcal</div>
-        </section>
+</div>
 
-        <!-- ANTES DE DORMIR -->
-        <section class="meal-card p-5 mb-8">
-            <div class="flex justify-between items-center mb-4">
-                <span class="bg-indigo-900 text-white px-3 py-1 rounded-lg font-bold text-sm">
-                    <i class="fas fa-moon mr-1"></i> 22:30
-                </span>
-                <span class="text-xs uppercase font-bold opacity-60">Antes de dormir</span>
-            </div>
-            <ul class="space-y-2 mb-4">
-                <li class="flex items-center"><i class="fas fa-egg text-yellow-500 mr-3 w-5"></i> 3 Huevos</li>
-            </ul>
-            <div class="kcal-tag inline-block px-3 py-1 rounded-md text-xs font-bold">~210 kcal</div>
-        </section>
+<div class="card">
+<div class="hora">07:00 - Segunda comida</div>
 
-        <!-- PILL INFORMATIVA -->
-        <div class="bg-blue-600 text-white p-6 rounded-[2rem] shadow-xl">
-            <h3 class="font-bold text-lg mb-2 flex items-center">
-                <i class="fas fa-capsules mr-2"></i> Suplementación: Creatina
-            </h3>
-            <p class="text-blue-100 text-sm mb-3">Tu aliado más simple y efectivo.</p>
-            <div class="bg-blue-700/50 p-4 rounded-xl space-y-2">
-                <p class="flex items-center text-sm font-medium"><i class="fas fa-check-circle mr-2 text-emerald-400"></i> Dosis: 5g diarios</p>
-                <p class="flex items-center text-sm font-medium"><i class="fas fa-clock mr-2 text-emerald-400"></i> Momento: Pre-Entreno (16:00)</p>
-            </div>
-        </div>
+<ul>
+<li>5 huevos revueltos</li>
+</ul>
 
-    </main>
+<p class="calorias">≈ 390 kcal</p>
 
-    <footer class="mt-10 p-6 text-center opacity-40 text-xs">
-        Hecho para visualización móvil • 2024
-    </footer>
+</div>
 
-    <script>
-        // Efecto visual simple al hacer click en las tarjetas (opcional)
-        document.querySelectorAll('.meal-card').forEach(card => {
-            card.addEventListener('click', () => {
-                // Se puede añadir lógica de "marcar como comido" aquí
-            });
-        });
-    </script>
+<div class="card">
+<div class="hora">10:00 - Media mañana</div>
+
+<ul>
+<li>1 scoop de proteína</li>
+<li>300 ml de yogurt bebible</li>
+</ul>
+
+<p class="calorias">≈ 300 kcal</p>
+
+</div>
+
+<div class="card">
+<div class="hora">14:00 - Almuerzo</div>
+
+<ul>
+<li>250-300 g de churrasco</li>
+<li>Puré de papas</li>
+</ul>
+
+<p class="calorias">≈ 800 kcal</p>
+
+</div>
+
+<div class="card">
+<div class="hora">16:15 - Pre Entrenamiento</div>
+
+<ul>
+<li>200 g de arroz cocido</li>
+<li>4 huevos revueltos</li>
+</ul>
+
+<p class="calorias">≈ 670 kcal</p>
+
+</div>
+
+<div class="card">
+<div class="hora">18:00 - Entrenamiento</div>
+
+<p>
+Entrenamiento intenso de fuerza e hipertrofia.
+</p>
+
+</div>
+
+<div class="card">
+<div class="hora">19:20 - Post Entrenamiento</div>
+
+<ul>
+<li>1 scoop de proteína</li>
+<li>70 g de maltodextrina</li>
+</ul>
+
+<p class="calorias">≈ 400 kcal</p>
+
+</div>
+
+<div class="card">
+<div class="hora">20:15 - Cena</div>
+
+<ul>
+<li>250 g de arroz cocido</li>
+<li>250 g de pechuga de pollo <strong>o</strong> 250 g de carne roja magra</li>
+</ul>
+
+<p class="calorias">
+Con pollo: ≈ 800 kcal<br>
+Con carne roja: ≈ 900 kcal
+</p>
+
+</div>
+
+<div class="card">
+<div class="hora">21:30 - Antes de dormir</div>
+
+<ul>
+<li>300 ml de yogurt bebible</li>
+<li>1 scoop de proteína</li>
+</ul>
+
+<p class="calorias">≈ 300 kcal</p>
+
+</div>
+
+<div class="total">
+
+<h2 style="color:white;">Resumen Diario</h2>
+
+<p><strong>Calorías totales:</strong> 4.300 - 4.400 kcal</p>
+
+<p><strong>Proteínas:</strong> 220 - 240 g</p>
+
+<p><strong>Carbohidratos:</strong> 430 - 470 g</p>
+
+<p><strong>Grasas:</strong> 90 - 100 g</p>
+
+<p><strong>Creatina:</strong> 5 g diarios.</p>
+
+<p><strong>Agua:</strong> 3 a 4 litros por día.</p>
+
+</div>
+
+</div>
+
 </body>
 </html>
-
-```
